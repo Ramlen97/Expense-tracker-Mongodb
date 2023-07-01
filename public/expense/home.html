@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Expenses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="expense.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <ul id="nav-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href='reports.html'>Reports</a></li>
+      </ul>
+      <div>
+        <button  id="rzp-button">Go Premium</button>
+        <button id="logout">Log out</button>
+      </div>
+    </nav>
+  </header>
+
+  <p id="err"></p>
+
+  <div class="expense-form">
+    <form onsubmit="storeAndShowExpense(event)">
+      <label for="amount">Expense</label>
+      <input type="number" id="amount" name="amount" autofocus="autofocus" placeholder="amount">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" placeholder="describe here">
+      <label for="category">Choose category</label>
+      <select id="category" name="category">
+        <option value="Fuel">Fuel</option>
+        <option value="Food">Food</option>
+        <option value="Grocery">Grocery</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Bills">Bills</option>
+        <option value="Vacation">On Vacation</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Others">Others</option>
+      </select>
+      <input type="hidden" id="id" name="id" value="null">
+      <button type="submit" id="submit-btn">Add Expense</button>
+    </form>
+  </div>
+
+  <div class="table">
+    <table id="expense-table">
+      <thead>
+        <tr>
+          <th style="width:125px">Date</th>
+          <th style="width: 150px">Category</th>
+          <th style="width: 350px">Description</th>
+          <th style="width: 125px">Amount</th>
+          <th style="width: 175px">Action</th>
+        </tr>
+      </thead>
+      <tbody id="expense-items">
+      </tbody>
+    </table>
+    <div class="pages">
+      <li id="prev-btn" style="display:none" onclick="showPreviousPage()"><<</li>
+      <ul id="page-list"></ul>
+      <li id="next-btn" style="display:none" onclick="showNextPage()">>></li>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+  <script src="home.js"></script>
+
+</body>
+
+</html>
